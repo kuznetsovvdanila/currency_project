@@ -1,13 +1,13 @@
 from __future__ import print_function
 
 import os.path
+from asgiref.sync import sync_to_async
 
 from django.shortcuts import render
 
-from django.http import HttpResponse
-from django.template import loader
 from datetime import date
 from .models import Product, Dollar
+from .gsheets import make_a_table
 
 
 def index(request):
@@ -29,6 +29,10 @@ def index(request):
         else:
             usd = bucks[len(bucks) - 1]
 
+    # getting spreadsheet's info
+    make_a_table()
+
+    # counting rub price of products
     products = Product.objects.all()
     if products:
         for i in range(len(products)):
@@ -37,6 +41,6 @@ def index(request):
     # necessary objects for the index page
     context = {
         'products': products,
-        'usd': usd
+        'usd': bucks[len(bucks) - 1]
     }
     return render(request, 'currency_app/index.html', context)
