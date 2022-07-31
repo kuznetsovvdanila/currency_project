@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'gsheets',
     'currency_app.apps.CurrencyAppConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,6 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+GSHEETS = {
+    'CLIENT_SECRETS': '<PATH TO DOWNLOADED CREDS>'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

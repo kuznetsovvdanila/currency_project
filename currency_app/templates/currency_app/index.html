@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'currency_app/css/style.min.css' %}">
+    <title>currency_checker</title>
+</head>
+<body>
+    <!-- <header class="flex v_center fixed">
+        <div class="logo">
+            currency_checker.
+        </div>
+    </header> -->
+    <main class="grid">
+        <div class="graph">
+
+        </div>
+        <div class="table_container">
+            <div class="table">
+                <div class="row">
+                    <div>№</div>
+                    <div>заказ</div>
+                    <div>usd</div>
+                    <div>rub</div>
+                    <div>срок поставки</div>
+                </div>
+                {% for product in products %}
+                <div class="row">
+                    <div>{{ product.id }}</div>
+                    <div>{{ product.order_number }}</div>
+                    <div>{{ product.price_usd }}</div>
+                    <div>{{ product.price_rub }}</div>
+                    <div>{{ product.delivery_date.day }}.{{ product.delivery_date.month }}.{{ product.delivery_date.year }}</div>
+                </div>
+                {% endfor %}
+                <div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="current_currency">
+            <div class="current_currency_number">
+                {{ usd.price }}₽
+            </div>
+            <div class="current_currency_text upper">
+                За 1 доллар
+            </div>
+        </div>
+    </main>
+    <!-- <footer>
+        <a href="https://kuznetsovv.site">
+            made by kuznetsovv
+        </a>
+    </footer> -->
+    <!-- 
+        - показываю текущий курс
+        - 
+    -->
+    <script href="js/main.min.js"></script>
+</body>
+</html>
